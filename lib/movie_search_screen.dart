@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; // import material package
 import 'services/omdb_service.dart'; // import omdb service for API data
+import 'movie_details_screen.dart'; // Import MovieDetailsScreen 
 
 class MovieSearchScreen extends StatefulWidget { // stateful = dynamic
   const MovieSearchScreen({super.key}); 
@@ -51,10 +52,10 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
               style: ElevatedButton.styleFrom( // button styling
                 backgroundColor: Colors.black, // button bg colour
                 foregroundColor: Colors.white, // button text colour
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10), // padding
-                textStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold), // text style
+                padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20), // padding
+                textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // text style
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10), // round corners
+                  borderRadius: BorderRadius.circular(40), // round corners
                 ),
               ),
               child: const Text('Search'), // button text
@@ -62,7 +63,23 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
             const SizedBox(height: 30),
             Expanded( // fills available space with search results
               child: _searchResults == null
-                  ? const Center(child: Text('No results yet.'))
+                  ? const Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center, // vertically center the content
+                        children: [
+                          Text(
+                            'In space, no one can hear you scream - Alien (1979)', // movie quote (tagline I guess in this case...)
+                            textAlign: TextAlign.center, //  center text
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 10), // space between quote and instruction
+                          Text(
+                            'Try searching for a movie!', // instruction
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                          ),
+                        ],
+                      ),
+                    )
                   : FutureBuilder<List<Movie>>(
                       future: _searchResults,
                       builder: (context, snapshot) {
@@ -72,19 +89,34 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                         } else if (snapshot.hasError) {
                           return Center(child: Text('Error: ${snapshot.error}'));
                         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                          return const Center(child: Text('404 - Movie not found.'));
+                          return const Center(child: Text('404 - Movie not found.')); // find a better reference
                         } else {
                           final movies = snapshot.data!;
                           return ListView.builder(
                             itemCount: movies.length,
                             itemBuilder: (context, index) {
                               final movie = movies[index];
-                              return ListTile(
-                                leading: movie.poster != 'N/A'
-                                    ? Image.network(movie.poster)
-                                    : const Icon(Icons.movie),
-                                title: Text(movie.title),
-                                subtitle: Text('Year: ${movie.year}'),
+                              return GestureDetector( // detects user clicks or taps
+                                onTap: () {
+                                  // nav to MovieDetailsScreen when tapped
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MovieDetailsScreen(
+                                        title: movie.title,
+                                        year: movie.year,
+                                        poster: movie.poster,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: ListTile(
+                                  leading: movie.poster != 'N/A'
+                                      ? Image.network(movie.poster)
+                                      : const Icon(Icons.movie),
+                                  title: Text(movie.title),
+                                  subtitle: Text('Year: ${movie.year}'),
+                                ),
                               );
                             },
                           );

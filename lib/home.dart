@@ -34,10 +34,10 @@ class _HomeScreenState extends State<HomeScreen> {
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color.fromARGB(255, 0, 0, 0), // button bg colour
             foregroundColor: Colors.white, // button text colour
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10), // button inside padding
-            textStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold), // text style
+            padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20), // button inside padding
+            textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // text style
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10), // round corners
+              borderRadius: BorderRadius.circular(40), // round corners
             ),
           ),
           child: const Text('Go to Movie Search Screen'), // button text
