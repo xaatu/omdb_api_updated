@@ -31,7 +31,8 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
         title: const Text(
           'Search Movies', // title of page
           style: TextStyle(
-            fontWeight: FontWeight.bold, // bold font
+            fontWeight: FontWeight.bold,
+            fontSize: 30, 
           ),
         ),
       ),
@@ -43,7 +44,8 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
               controller: _searchController, // manage input
               decoration: const InputDecoration( 
                 labelText: 'Enter movie title', // placeholder text
-                border: OutlineInputBorder(), // outline border for input text
+                border: OutlineInputBorder( // outline border for input text
+                ),
               ),
             ),
             const SizedBox(height: 30),
@@ -52,10 +54,10 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
               style: ElevatedButton.styleFrom( // button styling
                 backgroundColor: Colors.black, // button bg colour
                 foregroundColor: Colors.white, // button text colour
-                padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20), // padding
+                padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 15), // padding
                 textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // text style
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40), // round corners
+                  borderRadius: BorderRadius.circular(10), // round corners
                 ),
               ),
               child: const Text('Search'), // button text
@@ -89,7 +91,7 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                         } else if (snapshot.hasError) {
                           return Center(child: Text('Error: ${snapshot.error}'));
                         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                          return const Center(child: Text('404 - Movie not found.')); // find a better reference
+                          return const Center(child: Text('404 - Movie not found.')); // needs a better reference
                         } else {
                           final movies = snapshot.data!;
                           return ListView.builder(

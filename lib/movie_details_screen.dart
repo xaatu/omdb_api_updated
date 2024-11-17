@@ -16,7 +16,13 @@ class MovieDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title), // film title on app bar
+        title: Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+          )
+          ), // film title on app bar
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

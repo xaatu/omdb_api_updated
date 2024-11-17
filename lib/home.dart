@@ -8,39 +8,54 @@ class HomeScreen extends StatefulWidget { // dynamic
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  int uval = 1; // 
-  
+class _HomeScreenState extends State<HomeScreen> {  
   @override
   Widget build(BuildContext context) {
     return Scaffold( // scaffold
       appBar: AppBar(
+        
         title: const Text(
-          'Home Screen', // page title
+          'SHAPE Movies ▶', // page title
           style: TextStyle(
             fontWeight: FontWeight.bold, // bold font
+            fontSize: 40, 
+            
           ),
         ),
       ),
-      body: Center(
-        child: ElevatedButton( // raised button
-          onPressed: () {
-            // button directs to MovieSearchScreen
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const MovieSearchScreen()),
-            );
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromARGB(255, 0, 0, 0), // button bg colour
-            foregroundColor: Colors.white, // button text colour
-            padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20), // button inside padding
-            textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // text style
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(40), // round corners
+      body: Padding(
+        padding: const EdgeInsets.all(20.0), // add padding around the body
+        child: Column( // use a column to stack image and button
+          mainAxisAlignment: MainAxisAlignment.center, // center content vertically
+          children: [
+            // image
+            Image.asset(
+              'assets/shapes.png', // image path
+              height: 400, 
+              width: 400,
+              fit: BoxFit.cover, // image fit style
             ),
-          ),
-          child: const Text('Go to Movie Search Screen'), // button text
+            const SizedBox(height: 60), // space between image and button
+            ElevatedButton( // raised button
+              onPressed: () {
+                // button directs to MovieSearchScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MovieSearchScreen()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 0, 0, 0), // button bg colour
+                foregroundColor: Colors.white, // button text colour
+                padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20), // button inside padding
+                textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // text style
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10), // round corners
+                ),
+              ),
+              child: const Text('Go to Movie Search Screen'), // button text
+            ),
+          ],
         ),
       ),
     );
