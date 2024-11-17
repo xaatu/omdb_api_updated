@@ -50,6 +50,7 @@ For the limited amount of time i've had to work on it, I was only really able to
 
 Next steps - 
 
+- Add "Plot" to Movie Details screen
 - "Random Movie" button on Home screen
 - Image Carousel on Home screen
 - Movie Quote error messages

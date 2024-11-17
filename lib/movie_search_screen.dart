@@ -108,6 +108,7 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                                         title: movie.title,
                                         year: movie.year,
                                         poster: movie.poster,
+                                        
                                       ),
                                     ),
                                   );

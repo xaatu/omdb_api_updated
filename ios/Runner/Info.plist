@@ -6,7 +6,7 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	
 	<key>CFBundleName</key>
-	<string>OMDB_APP</string>
+	<string>SHAPE Movies</string>
 	
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>

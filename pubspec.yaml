@@ -1,4 +1,4 @@
-name: omdb_app
+name: shape_movies
 description: "A movie database."
 publish_to: 'none'
 
