@@ -3,8 +3,8 @@ import 'package:dio/dio.dart';
 class OmdbService {
   final Dio _dio = Dio();  
   /* loaded black screen - I thought the issue was with HTML so i switched to dio
-  only to find the app runs in an iphone 16 & Ipad simulator, but not macOS
-  find out why */
+  based on some advice on stack overflow, only to find the app runs in an iphone & Ipad simulator, 
+  but not macOS - find out why */
 
   /* I cannot get the .env file to work, i have watched a few videos and 
   checked stack overflow. I understand why it is necessary to use a .env
@@ -14,7 +14,7 @@ class OmdbService {
 
   /* API call using Dio - again this was an attempt to get 
   around what i thought was an issue with HTTP.
-  Tried turning of vpn etc first this was a last resort */
+  Tried turning off VPN etc first this was a last resort */
   Future<List<Movie>> searchMovies(String query) async {
     try { // try catch error handling
       final response = await _dio.get( // get request to OMDB API
