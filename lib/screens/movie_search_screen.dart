@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart'; // import material package
-import '../services/omdb_service.dart'; // import omdb service for API data
+import 'package:shape_movies/services/omdb_service.dart'; // import omdb service for API data
 import 'movie_details_screen.dart'; // import MovieDetailsScreen 
 import 'package:shape_movies/themes/theme.dart'; // import theme file
 

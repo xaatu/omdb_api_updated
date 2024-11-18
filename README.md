@@ -19,9 +19,14 @@ Also the automatic refactoring has saved me a lot of time already, when moving s
 
 - Users can now get a better look at poster and movie details, I intend to also pull a short plot from the OMDB API.
 
+![Movie Details](./assets/moviedetails.png)
+
+
 ### Error Handling - 
 
 - Added movie quotes rather than the basic error handling instructions - "try again" etc
+
+![Error Search](./assets/errorsearchscreen.png)
 
 ### Improved UI & Logo
 
@@ -30,6 +35,8 @@ Also the automatic refactoring has saved me a lot of time already, when moving s
 - New logo matching the colour theme and fitting the brand name.
 - Decided against the image carousel on the homepage
 - I used an APP Icon creator website to resize all of my images, but have since found that there is a better way to do it. (https://pub.dev/packages/flutter_launcher_icons)
+
+![Home Screen](./assets/home.png)
 
 ### Themes & Screens Folders
 
