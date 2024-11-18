@@ -91,7 +91,7 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                         } else if (snapshot.hasError) {
                           return Center(child: Text('Error: ${snapshot.error}'));
                         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                          return const Center(child: Text('404 - Movie not found.')); // needs a better reference
+                          return const Center(child: Text('Houston, we have a problem. - Apollo 13 (Try searching for a different title)')); // needs a better reference
                         } else {
                           final movies = snapshot.data!;
                           return ListView.builder(
