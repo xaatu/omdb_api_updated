@@ -15,7 +15,11 @@ class MovieSearchScreen extends StatefulWidget { // stateful = dynamic
 class MovieSearchScreenState extends State<MovieSearchScreen> {
   // manage text field
   final TextEditingController _searchController = TextEditingController();
-  // need more info on future
+  // ----- need more info on future -----
+  // a placeholder value, usually used when loading data from online.
+  // has 2 states - uncompleted/completed
+  // uncompleted = asynchronous operation still running, result not ready yet
+  // completed = a value or an error, depending on the success of the operation
   Future<List<Movie>>? _searchResults;
 
   void _searchMovies() { //_ for private method (only used in this file)
@@ -115,6 +119,7 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                                         title: movie.title,
                                         year: movie.year,
                                         poster: movie.poster,
+                                        // add plot 
                                       ),
                                     ),
                                   );
@@ -125,6 +130,7 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                                       : const Icon(Icons.movie),
                                   title: Text(movie.title),
                                   subtitle: Text('Year: ${movie.year}'),
+                                  // add plot 
                                 ),
                               );
                             },

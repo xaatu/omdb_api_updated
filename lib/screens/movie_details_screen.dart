@@ -5,12 +5,14 @@ class MovieDetailsScreen extends StatelessWidget {
   final String title;
   final String year;
   final String poster;
+  // add plot
 
   const MovieDetailsScreen({
     super.key,
     required this.title,
     required this.year,
     required this.poster,
+    // add plot
   });
 
   @override
@@ -42,6 +44,7 @@ class MovieDetailsScreen extends StatelessWidget {
               style: AppTheme.movieYearTextStyle, // Use theme style for movie year
             ),
             const SizedBox(height: 10),
+            // add plot
           ],
         ),
       ),

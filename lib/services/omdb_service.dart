@@ -40,14 +40,18 @@ class Movie {
   final String title;
   final String year;
   final String poster;
+  // add plot
 
-  Movie({required this.title, required this.year, required this.poster});
+// required = must provide parameters
+//this = assigns parameter values directly to linked class properties
+  Movie({required this.title, required this.year, required this.poster}); // add plot
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       title: json['Title'],
       year: json['Year'],
       poster: json['Poster'],
+      // add plot
     );
   }
 }
