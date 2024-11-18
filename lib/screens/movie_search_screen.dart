@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart'; // import material package
-import 'services/omdb_service.dart'; // import omdb service for API data
-import 'movie_details_screen.dart'; // Import MovieDetailsScreen 
+import '../services/omdb_service.dart'; // import omdb service for API data
+import 'movie_details_screen.dart'; // import MovieDetailsScreen 
+import 'package:shape_movies/themes/theme.dart'; // import theme file
 
 class MovieSearchScreen extends StatefulWidget { // stateful = dynamic
   const MovieSearchScreen({super.key}); 
@@ -9,6 +10,7 @@ class MovieSearchScreen extends StatefulWidget { // stateful = dynamic
   // to manage state for this screen
   MovieSearchScreenState createState() => MovieSearchScreenState();
 }
+
 // manage dynamic data
 class MovieSearchScreenState extends State<MovieSearchScreen> {
   // manage text field
@@ -24,16 +26,12 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
   }
 
   @override
-  // UI
   Widget build(BuildContext context) {
     return Scaffold( // structuring the page
       appBar: AppBar( // app bar with title
         title: const Text(
           'Search Movies', // title of page
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 30, 
-          ),
+          style: AppTheme.appBarTextStyleSmall, // use appBar style from theme
         ),
       ),
       body: Padding(
@@ -51,15 +49,7 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
             const SizedBox(height: 30),
             ElevatedButton( // raised button
               onPressed: _searchMovies, // calls _searchMovies on button press
-              style: ElevatedButton.styleFrom( // button styling
-                backgroundColor: Colors.black, // button bg colour
-                foregroundColor: Colors.white, // button text colour
-                padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 15), // padding
-                textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // text style
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10), // round corners
-                ),
-              ),
+              style: AppTheme.searchButtonStyle, // use button style from theme
               child: const Text('Search'), // button text
             ),
             const SizedBox(height: 30),
@@ -70,14 +60,14 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                         mainAxisAlignment: MainAxisAlignment.center, // vertically center the content
                         children: [
                           Text(
-                            'In space, no one can hear you scream - Alien (1979)', // movie quote (tagline I guess in this case...)
-                            textAlign: TextAlign.center, //  center text
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            'In space, no one can hear you scream - Alien (1979)', // movie quote
+                            textAlign: TextAlign.center, // center text
+                            style: AppTheme.quoteTextStyle, // quote style from theme
                           ),
                           SizedBox(height: 10), // space between quote and instruction
                           Text(
                             'Try searching for a movie!', // instruction
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                            style: AppTheme.instructionTextStyle, // instruction style from theme
                           ),
                         ],
                       ),
@@ -85,13 +75,30 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                   : FutureBuilder<List<Movie>>(
                       future: _searchResults,
                       builder: (context, snapshot) {
-                        //error handling
+                        // error handling
                         if (snapshot.connectionState == ConnectionState.waiting) {
                           return const Center(child: CircularProgressIndicator());
                         } else if (snapshot.hasError) {
                           return Center(child: Text('Error: ${snapshot.error}'));
                         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                          return const Center(child: Text('Houston, we have a problem. - Apollo 13 (Try searching for a different title)')); // needs a better reference
+                          // if movie not found, display error message
+                          return const Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center, // vertically center the content
+                              children: [
+                                Text(
+                                  '"Houston, we have a problem" - Apollo 13 (1995)', // movie quote
+                                  textAlign: TextAlign.center, // center text
+                                  style: AppTheme.quoteTextStyle, // quote style from theme
+                                ),
+                                SizedBox(height: 10), // space between quote and instruction
+                                Text(
+                                  'Try searching for a different title!', // instruction
+                                  style: AppTheme.instructionTextStyle, // instruction style from theme
+                                ),
+                              ],
+                            ),
+                          );
                         } else {
                           final movies = snapshot.data!;
                           return ListView.builder(
@@ -108,7 +115,6 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                                         title: movie.title,
                                         year: movie.year,
                                         poster: movie.poster,
-                                        
                                       ),
                                     ),
                                   );

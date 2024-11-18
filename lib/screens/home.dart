@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; // import material package
 import 'movie_search_screen.dart'; // import search screen
+import 'package:shape_movies/themes/theme.dart'; // import theme file
 
 class HomeScreen extends StatefulWidget { // dynamic
   const HomeScreen({super.key}); // need const or there is a problem - key for identification
@@ -8,19 +9,14 @@ class HomeScreen extends StatefulWidget { // dynamic
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {  
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold( // scaffold
       appBar: AppBar(
-        
         title: const Text(
           'SHAPE Movies ▶', // page title
-          style: TextStyle(
-            fontWeight: FontWeight.bold, // bold font
-            fontSize: 40, 
-            
-          ),
+          style: AppTheme.appBarTextStyle, // use text style from theme
         ),
       ),
       body: Padding(
@@ -44,16 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   MaterialPageRoute(builder: (context) => const MovieSearchScreen()),
                 );
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 0, 0, 0), // button bg colour
-                foregroundColor: Colors.white, // button text colour
-                padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20), // button inside padding
-                textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // text style
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10), // round corners
-                ),
-              ),
-              child: const Text('Go to Movie Search Screen'), // button text
+              style: AppTheme.buttonStyle, // use button style from theme
+              child: const Text('Go to Movie Search'), // button text
             ),
           ],
         ),

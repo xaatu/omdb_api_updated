@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart'; // import material package
-import 'home.dart'; // imports home screen
+import 'screens/home.dart'; // imports home screen
+import 'package:shape_movies/themes/theme.dart'; // import theme file
 
-void main() { 
+void main() {
   runApp(const MyApp());
 }
 
@@ -11,23 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'OMDB API Demo', // name of the app 
-      theme: ThemeData( 
-        // white colour theme
-        scaffoldBackgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        
-        // app bar background colour
-        appBarTheme: const AppBarTheme(
-          color: Color.fromARGB(255, 255, 255, 255),
-        ),
-
-        // placeholder text texbox decoration colour
-        inputDecorationTheme: const InputDecorationTheme(
-          labelStyle: TextStyle(color: Color.fromARGB(255, 51, 51, 51)), 
-        ),
-        
-      ),
-      home: const HomeScreen(),
+      title: 'SHAPE Movies', // name of the app 
+      theme: AppTheme.lightTheme, // use light theme from theme.dart
+      home: const HomeScreen(), 
     );
   }
 }

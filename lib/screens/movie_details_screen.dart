@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shape_movies/themes/theme.dart'; // Import the theme file
 
 class MovieDetailsScreen extends StatelessWidget {
   final String title;
@@ -18,11 +19,8 @@ class MovieDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           title,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-          )
-          ), // film title on app bar
+          style: AppTheme.appBarTextStyleSmall, // Use theme style for AppBar title
+        ), 
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -32,16 +30,16 @@ class MovieDetailsScreen extends StatelessWidget {
             Center(
               child: poster != 'N/A'
                   ? Image.network(poster) // poster
-                  : const Icon(Icons.movie, size: 150), // default movie icon for if there isn't a poster - https://api.flutter.dev/flutter/material/Icons-class.html
+                  : const Icon(Icons.movie, size: 150), // default movie icon
             ),
             const SizedBox(height: 20),
             Text(
               'Title: $title',
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              style: AppTheme.movieTitleTextStyle, // Use theme style for movie title
             ),
             Text(
               'Year: $year',
-              style: const TextStyle(fontSize: 18),
+              style: AppTheme.movieYearTextStyle, // Use theme style for movie year
             ),
             const SizedBox(height: 10),
           ],
