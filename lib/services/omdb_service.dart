@@ -17,7 +17,7 @@ class OmdbService {
   Tried turning off VPN etc first this was a last resort */
   Future<List<Movie>> searchMovies(String query) async {
     try { // try catch error handling
-      final response = await _dio.get( // get request to OMDB API
+      final response = await _dio.get( // get request to OMDB API using dio 
         'https://www.omdbapi.com/',
         queryParameters: {
           's': query, // movie title search query
@@ -26,7 +26,7 @@ class OmdbService {
       );
 
       if (response.statusCode == 200 && response.data['Search'] != null) {
-        return (response.data['Search'] as List).map((item) => Movie.fromJson(item)).toList();
+        return (response.data['Search'] as List).map((item) => Movie.fromJson(item)).toList(); // response in JSON format to be parsed and displayed
       }
     } catch (e) {
       // print("Error: e"); - this was from the issues i faced with
@@ -36,6 +36,7 @@ class OmdbService {
   }
 }
 
+// formatting the retrieved data
 class Movie {
   final String title;
   final String year;

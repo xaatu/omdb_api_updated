@@ -56,18 +56,47 @@ class AppTheme {
   static const TextStyle movieYearTextStyle = TextStyle(
     fontSize: 18,
   );
-
   // light theme
-  static final ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: const Color.fromARGB(255, 255, 255, 255), // white background
+static final ThemeData lightTheme = ThemeData(
+  scaffoldBackgroundColor: const Color.fromARGB(255, 255, 255, 255),
 
-    appBarTheme: const AppBarTheme(
-      color: Color.fromARGB(255, 255, 255, 255), // app bar background color
+  appBarTheme: const AppBarTheme(
+    color: Color.fromARGB(255, 255, 255, 255),
+  ),
+
+  inputDecorationTheme: const InputDecorationTheme(
+    labelStyle: TextStyle(color: Color.fromARGB(255, 51, 51, 51)),
+
+    // default border
+    border: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.black,
+        width: 5.0,
+      ),
     ),
 
-    inputDecorationTheme: const InputDecorationTheme(
-      labelStyle: TextStyle(color: Color.fromARGB(255, 51, 51, 51)), // placeholder text color
+    // when the field is focussed
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Color.fromARGB(255, 0, 0, 0),
+        width: 5.0,
+      ),
     ),
 
-  );
+    // enabled border (when page first loads, not focussed)
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Color.fromARGB(255, 124, 124, 124), 
+        width: 5.0,
+      ),
+    ),
+
+    
+
+  ),
+);
+
+
+
+
 }

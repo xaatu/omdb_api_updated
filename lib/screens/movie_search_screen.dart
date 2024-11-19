@@ -39,17 +39,16 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0), // app bar padding
+        padding: const EdgeInsets.all(30.0), // app bar padding
         child: Column( // vertical column
           children: [
             TextField(
-              controller: _searchController, // manage input
-              decoration: const InputDecoration( 
-                labelText: 'Enter movie title', // placeholder text
-                border: OutlineInputBorder( // outline border for input text
-                ),
-              ),
-            ),
+  controller: _searchController,
+  decoration: const InputDecoration(
+    labelText: 'Enter movie title...', // placeholder text
+  ),
+),
+
             const SizedBox(height: 30),
             ElevatedButton( // raised button
               onPressed: _searchMovies, // calls _searchMovies on button press
