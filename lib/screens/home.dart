@@ -25,12 +25,15 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center, // center content vertically
           children: [
             // image
-            Image.asset(
-              'assets/shapes.png', // image path
-              height: 400, 
-              width: 400,
-              fit: BoxFit.cover, // image fit style
+            Center(
+              child: Image.asset(
+                'assets/shapes.png', // image path
+                width: MediaQuery.of(context).size.width * 0.8, // 80% screen width
+                height: null, // null keeps aspect ratio if i've already set height
+                fit: BoxFit.cover, // image fit style
+              ),
             ),
+
             const SizedBox(height: 60), // space between image and button
             ElevatedButton( // raised button
               onPressed: () {
@@ -44,6 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
               child: const Text('Go to Movie Search'), // button text
             ),
           ],
+
+
+          
         ),
       ),
     );

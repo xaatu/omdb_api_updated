@@ -39,7 +39,7 @@ class AppTheme {
   static final ButtonStyle searchButtonStyle = ElevatedButton.styleFrom(
     backgroundColor: Colors.black, // button bg colour
     foregroundColor: Colors.white, // button text colour
-    padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 15), // button inside padding
+    padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15), // button inside padding
     textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // text style
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10), // round corners
