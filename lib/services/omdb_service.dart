@@ -26,7 +26,14 @@ class OmdbService {
       );
 
       if (response.statusCode == 200 && response.data['Search'] != null) {
-        return (response.data['Search'] as List).map((item) => Movie.fromJson(item)).toList(); // response in JSON format to be parsed and displayed
+        List<Movie> movies = (response.data['Search'] as List).map((item) => Movie.fromJson(item)).toList(); // response in JSON format to be parsed and displayed
+
+        // use imdbID to fetch plot details
+        for (var movie in movies) {
+          movie.plot = (await fetchPlotByImdbId(movie.imdbId))!; // update movie plot
+        }
+
+        return movies;
       }
     } catch (e) {
       // print("Error: e"); - this was from the issues i faced with
@@ -34,25 +41,47 @@ class OmdbService {
     }
     return []; // return empty list if there are no results 
   }
+  Future<String?> fetchPlotByImdbId(String imdbId) async {
+    try { // try catch error handling
+      final response = await _dio.get( // get request to OMDB API using dio 
+        'https://www.omdbapi.com/',
+        queryParameters: {
+          'i': imdbId, // imdb id needed for plot
+          'apikey': apiKey,
+        },
+      );
+
+      if (response.statusCode == 200 && response.data['Plot'] != null) {
+        return response.data['Plot']; // plot
+      }
+    } catch (e) {
+      // print("Error: e"); - this was from the issues i faced with
+      // the MacOS and was no longer necessary when using xcode simulator
+    }
+    return null;
+  }
 }
+
 
 // formatting the retrieved data
 class Movie {
   final String title;
   final String year;
   final String poster;
-  // add plot
+  String plot;
+  final String imdbId;
 
-// required = must provide parameters
-//this = assigns parameter values directly to linked class properties
-  Movie({required this.title, required this.year, required this.poster}); // add plot
+  // required = must provide parameters
+  // this = assigns parameter values directly to linked class properties
+  Movie({required this.title, required this.year, required this.poster, required this.plot, required this.imdbId});
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       title: json['Title'],
       year: json['Year'],
       poster: json['Poster'],
-      // add plot
+      plot: json['Plot'] ?? 'Plot not available', // if not available shows 'plot not available'
+      imdbId: json['imdbID'],
     );
   }
 }

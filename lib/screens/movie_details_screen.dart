@@ -1,18 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:shape_movies/themes/theme.dart'; // Import the theme file
+import 'package:flutter/material.dart'; // import material package
+import 'package:shape_movies/themes/theme.dart'; // import theme file
 
 class MovieDetailsScreen extends StatelessWidget {
   final String title;
   final String year;
   final String poster;
-  // add plot
+  final String plot;
 
   const MovieDetailsScreen({
     super.key,
     required this.title,
     required this.year,
     required this.poster,
-    // add plot
+    required this.plot,
   });
 
   @override
@@ -21,13 +21,12 @@ class MovieDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           title,
-          style: AppTheme.appBarTextStyleSmall, // Use theme style for AppBar title
+          style: AppTheme.appBarTextStyleSmall,
         ), 
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView( // use ListView instead of Column because on smaller screens its overflowing 
           children: [
             Center(
               child: poster != 'N/A'
@@ -37,14 +36,18 @@ class MovieDetailsScreen extends StatelessWidget {
             const SizedBox(height: 20),
             Text(
               'Title: $title',
-              style: AppTheme.movieTitleTextStyle, // Use theme style for movie title
+              style: AppTheme.titleTextStyle,
             ),
             Text(
               'Year: $year',
-              style: AppTheme.movieYearTextStyle, // Use theme style for movie year
+              style: AppTheme.yearTextStyle,
             ),
             const SizedBox(height: 10),
-            // add plot
+            Text(
+              'Plot: $plot',
+              style: AppTheme.plotTextStyle,
+            ),
+            const SizedBox(height: 10),
           ],
         ),
       ),

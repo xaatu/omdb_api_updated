@@ -43,12 +43,11 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
         child: Column( // vertical column
           children: [
             TextField(
-  controller: _searchController,
-  decoration: const InputDecoration(
-    labelText: 'Enter movie title...', // placeholder text
-  ),
-),
-
+              controller: _searchController,
+              decoration: const InputDecoration(
+                labelText: 'Enter movie title...', // placeholder text
+              ),
+            ),
             const SizedBox(height: 30),
             ElevatedButton( // raised button
               onPressed: _searchMovies, // calls _searchMovies on button press
@@ -118,7 +117,7 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                                         title: movie.title,
                                         year: movie.year,
                                         poster: movie.poster,
-                                        // add plot 
+                                        plot: movie.plot, // still passing plot for detailed screen, but removed from search screen (too text heavy)
                                       ),
                                     ),
                                   );
@@ -128,8 +127,7 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
                                       ? Image.network(movie.poster)
                                       : const Icon(Icons.movie),
                                   title: Text(movie.title),
-                                  subtitle: Text('Year: ${movie.year}'),
-                                  // add plot 
+                                  subtitle: Text('Year: ${movie.year}'), 
                                 ),
                               );
                             },
@@ -144,3 +142,4 @@ class MovieSearchScreenState extends State<MovieSearchScreen> {
     );
   }
 }
+

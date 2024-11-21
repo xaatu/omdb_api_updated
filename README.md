@@ -14,11 +14,13 @@ Also, the automatic refactoring has saved me a lot of time already. When moving 
 
 ## UPDATED Features
 
+- NEED TO UPDATE IMAGES 
+
 
 ### Additional "Movie Details" screen- 
 
 - Users can now get a better look at poster and movie details.
-- I intend to also pull a short plot from the OMDB API.
+- Plot can now be seen, by making a GET request to the OMDB API using the movie’s IMDb ID.
 
 ![Movie Details](./assets/moviedetails.png)
 
@@ -44,9 +46,15 @@ Also, the automatic refactoring has saved me a lot of time already. When moving 
 - Themes now consistent and all handled from one theme.dart file, within a themes folder
 - screens folder now contains all screens (can I just say again how great the automatic refactoring is)
 
+## Testing
+
+- I had been testing exclusively on the IPhone 16 Pro Max
+- Upon testing a larger screen (IPad), realised the home page image was too small - added a media query to set it to 80% of screen size
+- tested on a smaller screen (Iphone SE), Movie Details page overflowed after adding "Plot" section so I changed it from column to ListView.
+- Tested it on my own phone then had issues running it afterwards on simulator - hadn't changed settings back from Profile to Debug, but it was worth the struggle to see it working on my IPhone without it even being plugged in!
+
 ## TO DO
 
-- Add "Plot" to Movie Details screen
 - Search Filtering 
 
 ## Final Notes

@@ -24,6 +24,14 @@ class AppTheme {
     fontWeight: FontWeight.normal,
   );
 
+    static const TextStyle plotTextStyle = TextStyle(
+    fontSize: 16, 
+    fontWeight: FontWeight.normal,
+  );
+
+
+
+
   // button style (elevated button)
   static final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
     backgroundColor: const Color.fromARGB(255, 0, 0, 0), // button bg colour
@@ -47,13 +55,13 @@ class AppTheme {
   );
 
   // movie details TITLE
-  static const TextStyle movieTitleTextStyle = TextStyle(
+  static const TextStyle titleTextStyle = TextStyle(
     fontSize: 22, 
     fontWeight: FontWeight.bold,
   );
 
   // movie details YEAR
-  static const TextStyle movieYearTextStyle = TextStyle(
+  static const TextStyle yearTextStyle = TextStyle(
     fontSize: 18,
   );
   // light theme
